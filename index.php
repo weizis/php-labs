@@ -69,10 +69,10 @@ $square2 = new Square(9);
 $triangle1 = new Triangle(3, 4, 5);
 $triangle2 = new Triangle(5, 5, 6);
 
-echo "Площадь: " . $rectangle1->getArea();
-echo "Площадь: " . $rectangle2->getArea();
-echo "Площадь: " . $square1->getArea();
-echo "Площадь: " . $square2->getArea();
-echo "Площадь: " . $triangle1->getArea();
-echo "Площадь: " . round($triangle2->getArea(), 2);
+echo "Площадь прямоугольник1: " . $rectangle1->getArea() . "<br";
+echo "Площадь прямоугольник2: " . $rectangle2->getArea() . "<br>";
+echo "Площадь квадрат1: " . $square1->getArea() . "<br>";
+echo "Площадь квадрат2: " . $square2->getArea() . "<br>";
+echo "Площадь треугольник: " . $triangle1->getArea() . "<br>";
+echo "Площадь треугольник: " . round($triangle2->getArea(), 2) . "<br>";
 ?>
