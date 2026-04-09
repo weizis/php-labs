@@ -68,11 +68,15 @@ $square1 = new Square(4);
 $square2 = new Square(9);
 $triangle1 = new Triangle(3, 4, 5);
 $triangle2 = new Triangle(5, 5, 6);
+echo "Прямоугольники:<br>";
+echo "<p>" . $rectangle1->infoAbout() . " Площадь: " . $rectangle1->getArea() . "</p>";
+echo "<p>" . $rectangle2->infoAbout() . " Площадь: " . $rectangle2->getArea() . "</p>";
 
-echo "Площадь прямоугольник1: " . $rectangle1->getArea() . "<br";
-echo "Площадь прямоугольник2: " . $rectangle2->getArea() . "<br>";
-echo "Площадь квадрат1: " . $square1->getArea() . "<br>";
-echo "Площадь квадрат2: " . $square2->getArea() . "<br>";
-echo "Площадь треугольник: " . $triangle1->getArea() . "<br>";
-echo "Площадь треугольник: " . round($triangle2->getArea(), 2) . "<br>";
+echo "Квадраты:<br>";
+echo "<p>" . $square1->infoAbout() . " Площадь: " . $square1->getArea() . "</p>";
+echo "<p>" . $square2->infoAbout() . " Площадь: " . $square2->getArea() . "</p>";
+
+echo "Треугольники:<br>";
+echo "<p>" . $triangle1->infoAbout() . " Площадь: " . round($triangle1->getArea(), 2) . "</p>";
+echo "<p>" . $triangle2->infoAbout() . " Площадь: " . round($triangle2->getArea(), 2) . "</p>";
 ?>
