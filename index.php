@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <title>Главная</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
