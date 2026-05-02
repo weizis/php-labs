@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animal Facts</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #ffe6f0;
+    text-align: center;
+}
+
+button {
+    background: #ff4da6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e60073;
+}
+
+.card {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    width: 60%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px pink;
+}
+</style>
+</head>
+
 <body>
-<button onclick="fact()">Факт</button>
-<pre id="out"></pre>
+
+<h2>Animal Facts</h2>
+
+<button onclick="getFact()">Get fact</button>
+
+<div class="card" id="fact">Click button</div>
 
 <script>
-async function fact() {
+async function getFact() {
     const res = await fetch('https://catfact.ninja/fact');
     const data = await res.json();
-    document.getElementById('out').textContent = data.fact;
+
+    document.getElementById('fact').innerText = data.fact;
 }
 </script>
+
 </body>
 </html>

@@ -1,15 +1,114 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>Advice API</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #ffe0f0, #ffd6e7);
+    text-align: center;
+    padding: 40px;
+}
+
+h2 {
+    color: #ff1493;
+}
+
+button {
+    background: #ff69b4;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff1493;
+}
+
+#advice {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#saved {
+    margin-top: 20px;
+}
+
+.saved-item {
+    background: white;
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
 <body>
-<button onclick="getAdvice()">Получить совет</button>
-<pre id="out"></pre>
+
+
+<button onclick="getAdvice()">Get advice</button>
+<button onclick="saveCurrent()">Save</button>
+<button onclick="showSaved()">Show saved</button>
+<button onclick="clearSaved()">Clear</button>
+
+<p id="advice">Click "Get advice"</p>
+
+<div id="saved"></div>
 
 <script>
+
 async function getAdvice() {
-    const res = await fetch('https://api.adviceslip.com/advice');
-    const data = await res.json();
-    document.getElementById('out').textContent = data.slip.advice;
+    try {
+        const res = await fetch(
+            'https://api.adviceslip.com/advice?ts=' + Date.now()
+        );
+
+        const data = await res.json();
+        const text = data.slip.advice;
+
+        document.getElementById('advice').innerText = text;
+
+    } catch (e) {
+        document.getElementById('advice').innerText =
+            "Error loading advice";
+        console.log(e);
+    }
 }
+
+function saveCurrent() {
+    const text = document.getElementById('advice').innerText;
+
+    if (!text || text === "Click \"Get advice\"") return;
+
+    let saved = JSON.parse(localStorage.getItem('advice') || '[]');
+
+    if (!saved.includes(text)) {
+        saved.push(text);
+    }
+
+    localStorage.setItem('advice', JSON.stringify(saved));
+}
+
+function showSaved() {
+    const saved = JSON.parse(localStorage.getItem('advice') || '[]');
+
+    document.getElementById('saved').innerHTML =
+        saved.map(a => `<div class="saved-item">${a}</div>`).join('');
+}
+
+function clearSaved() {
+    localStorage.removeItem('advice');
+    document.getElementById('saved').innerHTML = "";
+}
+
 </script>
+
 </body>
 </html>
