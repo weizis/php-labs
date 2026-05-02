@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="fact()">Факт</button>
+<pre id="out"></pre>
+
+<script>
+async function fact() {
+    const res = await fetch('https://catfact.ninja/fact');
+    const data = await res.json();
+    document.getElementById('out').textContent = data.fact;
+}
+</script>
+</body>
+</html>

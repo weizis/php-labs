@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="getAdvice()">Получить совет</button>
+<pre id="out"></pre>
+
+<script>
+async function getAdvice() {
+    const res = await fetch('https://api.adviceslip.com/advice');
+    const data = await res.json();
+    document.getElementById('out').textContent = data.slip.advice;
+}
+</script>
+</body>
+</html>
